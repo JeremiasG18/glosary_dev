@@ -1,0 +1,15 @@
+{
+    "name": "jeremias/glosary_dev",
+    "autoload": {
+        "psr-4": {
+            "Jeremias\\GlosaryDev\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gonzalez Jeremias",
+            "email": "jeregonza194@gmail.com"
+        }
+    ],
+    "require": {}
+}
