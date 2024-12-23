@@ -4,7 +4,7 @@ require_once './vendor/autoload.php';
 
 use Jeremias\GlosaryDev\controller\Conceptos;
 
-$lista_blanca = ["newconcept", "themes", "php"];
+$lista_blanca = ["newconcept", "themes", "concepts"];
 
 include './src/public/templates/header.php';
 include './src/public/templates/navbar.php';

@@ -1,33 +1,55 @@
-const form = document.querySelector(".form");
+if (location.href.includes("newconcept")) {
 
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    let respuesta = window.confirm("Are you sure you save the concept?")
+    const form = document.querySelector(".form");
 
-    if (respuesta) {
-        let data = new FormData(form)
-        let method=form.getAttribute("method");
-        let action=form.getAttribute("action");
+    form.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        let respuesta = window.confirm("Are you sure you save the concept?")
 
-        let encabezados= new Headers();
+        if (respuesta) {
+            let data = new FormData(form)
+            let method=form.getAttribute("method");
+            let action=form.getAttribute("action");
 
-        let config={
-            method: method,
-            headers: encabezados,
-            mode: 'cors',
-            cache: 'no-cache',
-            body: data
-        };
+            let encabezados= new Headers();
 
-        fetch(action,config)
-        .then(respuesta => respuesta.json())
-        .then(respuesta =>{ 
-            alert(respuesta.text)
-            if (respuesta.text.includes("saved successfully")) {
-                window.location.href = respuesta.url;
-            }
-        });
-        
-    }
+            let config={
+                method: method,
+                headers: encabezados,
+                mode: 'cors',
+                cache: 'no-cache',
+                body: data
+            };
 
-})
+            fetch(action,config)
+            .then(respuesta => respuesta.json())
+            .then(respuesta =>{ 
+                alert(respuesta.text)
+                if (respuesta.text.includes("saved successfully")) {
+                    window.location.href = respuesta.url;
+                }
+            });
+            
+        }
+
+    })
+
+}
+
+if (location.href.includes("concepts")) {
+    const imagen = document.querySelector(".imagen");
+    const gallery = document.querySelector(".box_none");
+    const image = document.querySelectorAll(".img")
+    image.forEach(img => {
+        img.addEventListener('click', ()=>{
+            imagen.setAttribute("src", img.getAttribute("src"))
+            gallery.classList.remove('box_none');
+            gallery.classList.add('box');
+        })
+    })
+    let button = document.querySelector('.box_none');
+    button.addEventListener('click', () =>{
+        gallery.classList.remove('box');
+        button.classList.add("box_none");
+    })
+}
